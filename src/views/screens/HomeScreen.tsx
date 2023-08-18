@@ -15,11 +15,12 @@ import { StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import categories from "../../data/categories";
 import foods from "../../data/foods";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("screen");
 const cardWidth = width / 2 - 20;
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: any) {
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const CategoryList = () => {
@@ -71,23 +72,31 @@ export default function HomeScreen() {
 
   const Card = ({ food }: any) => {
     return (
-      <View style={style.card}>
-        <View
-          style={{ justifyContent: "center", alignItems: "center", top: -30 }}
-        >
-          <Image source={food.image} style={style.imageONE} />
-        </View>
-        <View style={{ marginStart: 20, gap: 5 }}>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>{food.name}</Text>
-          <Text style={{ color: COLORS.grey }}>{food.ingredients}</Text>
-          <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-            Rs.{food.price}
-          </Text>
-          <View>
-            <Icon name="add" size={20} style={style.addToCart} />
+      <TouchableHighlight
+        underlayColor={COLORS.white}
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate("DetailsScreen", food)}
+      >
+        <View style={style.card}>
+          <View
+            style={{ justifyContent: "center", alignItems: "center", top: -30 }}
+          >
+            <Image source={food.image} style={style.imageONE} />
+          </View>
+          <View style={{ marginStart: 20, gap: 5 }}>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              {food.name}
+            </Text>
+            <Text style={{ color: COLORS.grey }}>{food.ingredients}</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+              Rs.{food.price}
+            </Text>
+            <View>
+              <Icon name="add" size={20} style={style.addToCart} />
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   };
 
@@ -187,6 +196,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
   },
   card: {
+    flex: 1,
     height: 220,
     width: cardWidth,
     marginHorizontal: 10,

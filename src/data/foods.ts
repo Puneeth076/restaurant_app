@@ -32,7 +32,14 @@ const foods = [
     image: require("../assets/sushiMakizushi.png"),
   },
   {
-    id: "4",
+    id: "5",
+    name: "Sushi Makizushi",
+    ingredients: "Salmon Meat",
+    price: "500",
+    image: require("../assets/sushiMakizushi.png"),
+  },
+  {
+    id: "6",
     name: "Sushi Makizushi",
     ingredients: "Salmon Meat",
     price: "500",
