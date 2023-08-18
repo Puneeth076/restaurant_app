@@ -31,20 +31,6 @@ const foods = [
     price: "500",
     image: require("../assets/sushiMakizushi.png"),
   },
-  {
-    id: "5",
-    name: "Sushi Makizushi",
-    ingredients: "Salmon Meat",
-    price: "500",
-    image: require("../assets/sushiMakizushi.png"),
-  },
-  {
-    id: "6",
-    name: "Sushi Makizushi",
-    ingredients: "Salmon Meat",
-    price: "500",
-    image: require("../assets/sushiMakizushi.png"),
-  },
 ];
 
 export default foods;

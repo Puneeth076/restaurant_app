@@ -18,7 +18,7 @@ export default function Button({ title, onPress }: Props) {
   );
 }
 
-export const Secondarybutton = ({ title, onPress }: Props) => {
+export const Secondarybutton = ({ title, onPress }: any) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <View style={style.secondbtnContainer}>

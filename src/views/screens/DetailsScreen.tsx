@@ -4,13 +4,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import COLORS from "../../data/colors";
 import Button, { Secondarybutton } from "../components/Button";
+import { MyContext } from "../../../App";
 
 export default function DetailsScreen({ navigation, route }: any) {
   const item = route.params;
+  const { cartItem, setCartItem }: any = React.useContext(MyContext);
+  const addToCart = () => {
+    alert("Added to cart");
+    setCartItem({ ...cartItem, item });
+    navigation.navigate("CartScreen");
+  };
+
   return (
     <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
       <View style={style.header}>
-        <Icon name="arrow-back-ios" size={28} />
+        <Icon name="arrow-back-ios" size={28} onPress={navigation.goBack} />
         <Text style={{ fontSize: 30, fontWeight: "bold" }}>Details</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -49,7 +57,7 @@ export default function DetailsScreen({ navigation, route }: any) {
             only five centuries.
           </Text>
           <View style={{ marginTop: 40, marginBottom: 40 }}>
-            <Secondarybutton title="Add to cart" />
+            <Secondarybutton title="Add to cart" onPress={addToCart} />
           </View>
         </View>
       </ScrollView>
